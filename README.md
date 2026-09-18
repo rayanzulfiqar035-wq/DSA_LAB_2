@@ -12,6 +12,16 @@
 
 ---
 
+## 👤 Author
+
+| | |
+|---|---|
+| **Name** | Muhammad Rayan Zulfiqar |
+| **Registration Number** | 543021 |
+| **Section** | BSCS 15 D |
+
+---
+
 ## 📖 Overview
 
 This repository contains solutions for **Data Structures and Algorithms — Lab 02**.
@@ -233,15 +243,6 @@ matrix = nullptr;
 
 ---
 
-## 👤 Author
-
-| | |
-|---|---|
-| **Name** | Your Name |
-| **Registration Number** | Your Registration Number |
-| **Section** | Your Section |
-
----
 
 <div align="center">
 
