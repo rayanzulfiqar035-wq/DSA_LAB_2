@@ -1,182 +1,149 @@
-DSA Lab 02 — Static & Dynamic Arrays, Pointers, and Dynamic Memory Allocation
+<div align="center">
 
-Overview
+# 📊 DSA Lab 02 — Static & Dynamic Arrays
 
-This repository contains solutions for Data Structures and Algorithms Lab 02.
-The lab focuses on working with 1D and 2D arrays, pointers, dynamic memory allocation, pointer arithmetic, and safe memory management in C++.
+**Data Structures and Algorithms · Pointers · Dynamic Memory Allocation**
 
-Learning Objectives
+![C++](https://img.shields.io/badge/language-C%2B%2B11-blue?logo=cplusplus)
+![Status](https://img.shields.io/badge/status-completed-brightgreen)
+![License](https://img.shields.io/badge/license-Educational-lightgrey)
 
-By completing this lab, the following concepts are practiced:
+</div>
 
-Fixed-size and dynamic arrays
+---
 
-Pointer notation and pointer arithmetic
+## 📖 Overview
 
-Dynamic memory allocation using new[]
+This repository contains solutions for **Data Structures and Algorithms — Lab 02**.
 
-Memory deallocation using delete[]
+The lab focuses on:
 
-2D arrays and row pointers
+- 🧮 Static and dynamic arrays
+- ➡️ Pointer notation and pointer arithmetic
+- 🧠 Dynamic memory allocation using `new[]`
+- 🗑️ Memory deallocation using `delete[]`
+- 🔲 2D arrays and row pointers
+- 🧩 Dynamic 2D arrays using `int**`
+- 📈 Expanding dynamic arrays
+- ⚠️ Common memory errors — out-of-bounds access, dangling pointers, memory leaks
 
-Dynamic 2D arrays using int**
+---
 
-Expanding dynamic arrays by allocating and copying
+## 🗂️ Tasks
 
-Identifying memory errors such as:
-
-Out-of-bounds access
-
-Dangling pointers
-
-Memory leaks
-
-Lab Tasks
-
-Task 1 — Static 1D Array and Pointer Access
+### Task 1 — Static 1D Array
 
 A shop records sales for five days using:
 
+```cpp
 int sales[5];
 int* p = sales;
+```
 
-The program:
+**Covers:**
+- Reading values using pointer notation
+- Displaying the values
+- Calculating the total
+- Updating the third day's value through a pointer
+- Understanding `p`, `&p`, `*p`, and `*(p + 2)`
 
-Reads five non-negative sales values using pointer notation
+---
 
-Displays the values
+### Task 2 — Dynamic 1D Array
 
-Calculates the total sales
+A teacher stores student marks using a dynamically allocated array.
 
-Updates the third day's sales through the pointer
-
-Demonstrates pointer expressions such as p, &p, *p, and *(p + 2)
-
-Task 2 — Dynamic 1D Array
-
-A teacher stores marks for a runtime-defined number of students.
-
-The program:
-
-Reads and validates n
-
-Allocates memory using:
-
+```cpp
 int* marks = new int[n];
+```
 
-Reads marks using pointer notation
+**Covers:**
+- Runtime array size
+- Reading marks using pointer notation
+- Calculating total and average
+- Counting passing marks
+- Releasing memory using `delete[]`
 
-Calculates total and average
+---
 
-Counts students with marks greater than or equal to 50
-
-Releases memory using:
-
-delete[] marks;
-marks = nullptr;
-
-Task 3 — Static 2D Array and Row Pointer
+### Task 3 — Static 2D Array
 
 Sales for two branches across three days are stored using:
 
+```cpp
 int sales[2][3];
 int (*rowPtr)[3] = sales;
+```
 
-The program:
+**Covers:**
+- Reading and displaying a 2D array
+- Calculating branch totals
+- Calculating day totals
+- Understanding row pointers
+- Understanding why `int**` is not correct for a built-in 2D array
 
-Reads and displays the 2D array using pointer notation
+---
 
-Calculates totals for each branch
+### Task 4 — Dynamic 2D Array
 
-Calculates totals for each day
+Student marks are stored using a dynamically allocated 2D array.
 
-Demonstrates the difference between:
-
-int*
-
-int (*)[3]
-
-int**
-
-Task 4 — Dynamic 2D Array
-
-Marks for students and subjects are stored in a dynamically allocated matrix.
-
-Memory is allocated using:
-
+```cpp
 int** marks = new int*[rows];
 
 for (int r = 0; r < rows; r++)
 {
     marks[r] = new int[cols];
 }
+```
 
-The program:
+**Covers:**
+- Runtime rows and columns
+- Reading and displaying the matrix
+- Calculating each student's total
+- Finding the student with the highest total
+- Handling ties by selecting the first student
+- Correctly releasing every allocated row
 
-Reads and displays student marks
+---
 
-Calculates each student's total
+### Task 5 — Expanding a Dynamic Array
 
-Finds the student with the highest total
+Demonstrates manual resizing of a dynamic array.
 
-Keeps the first student in case of a tie
+**Steps:**
 
-Correctly releases every allocated row and then the row-pointer array
+1. Allocate an array of size `n`
+2. Allocate a new array of size `n + 1`
+3. Copy the original values using pointer notation
+4. Store the new value
+5. Delete the old array
+6. Point the original pointer to the new array
+7. Update the size
+8. Delete the final block
 
-Task 5 — Expanding a Dynamic Array
+---
 
-This task demonstrates how to manually resize a dynamic array.
+### Task 6 — Fixing Memory Errors
 
-The program:
+Identifies and fixes common dynamic memory errors.
 
-Allocates an array of size n
+**Original code contains:**
+- ❌ An out-of-bounds loop condition
+- ❌ Incorrect use of `delete` instead of `delete[]`
+- ❌ Accessing memory after deletion
 
-Allocates a second array of size n + 1
+**Corrected program:**
+- ✅ Uses `i < n`
+- ✅ Uses `delete[]`
+- ✅ Displays values before deleting memory
+- ✅ Sets the pointer to `nullptr`
 
-Copies the original values
+---
 
-Stores one additional value
+## 📁 Repository Structure
 
-Deletes the old array
-
-Redirects the original pointer to the new block
-
-Releases the final block correctly
-
-This demonstrates that changing the value of n alone does not increase the capacity of an already allocated array.
-
-Task 6 — Debugging Dynamic Memory
-
-This task fixes common dynamic-memory errors.
-
-The original code contains three major problems:
-
-Out-of-bounds access caused by i <= n
-
-Using delete instead of delete[]
-
-Accessing memory after it has been deleted
-
-The corrected program:
-
-Uses valid array bounds
-
-Displays all three entered integers
-
-Uses delete[]
-
-Sets the pointer to nullptr
-
-Example input:
-
-4 5 6
-
-Expected output:
-
-4 5 6
-
-Repository Structure
-
+```text
 DSA-Lab-02/
 │
 ├── task1.cpp
@@ -186,72 +153,98 @@ DSA-Lab-02/
 ├── task5.cpp
 ├── task6.cpp
 └── README.md
+```
 
-Compilation
+---
 
-Each task is written as an independent C++ program.
+## ⚙️ Compilation
 
-Compile a task using:
+Compile any task using:
 
+```bash
 g++ task1.cpp -o task1
+```
 
-Run it with:
+Run it using:
 
+```bash
 ./task1
+```
 
 On Windows:
 
+```bash
 task1.exe
+```
 
-Replace task1.cpp with the required task file.
+---
 
-Requirements
+## ✅ Requirements
 
-C++11 or later
+- C++11 or later
+- GCC, Clang, Visual Studio, or another standard C++ compiler
+- Raw arrays and pointers
+- `new[]` and `delete[]`
 
-Any standard C++ compiler such as:
+**The lab does *not* use:**
 
-GCC / G++
+- `vector`
+- Variable-length arrays
+- Library sorting functions
 
-Clang
+---
 
-Visual Studio C++
+## 🔑 Key Concepts
 
-The lab uses raw arrays, pointers, new[], and delete[].
-vector, variable-length arrays, and library sorting functions are not used.
-
-Key Concepts
-
-// Pointer to first element of a 1D array
+```cpp
 int* p = array;
 
-// Dynamic 1D array
 int* arr = new int[n];
 
-// Pointer to a row of three integers
 int (*rowPtr)[3] = matrix;
 
-// Dynamic 2D array
 int** matrix = new int*[rows];
 
-// Release a dynamic 1D array
 delete[] arr;
+```
 
-// Release a dynamic 2D array
+For a dynamic 2D array:
+
+```cpp
 for (int r = 0; r < rows; r++)
+{
     delete[] matrix[r];
+}
 
 delete[] matrix;
+matrix = nullptr;
+```
 
-Course Information
+---
 
-Course: Data Structures and Algorithms
-Lab: Lab 02
-Topic: Static and Dynamic Arrays, Pointers, and Dynamic Memory Allocation
-Language: C++
+## 🎓 Course Information
 
-Author
+| | |
+|---|---|
+| **Course** | Data Structures and Algorithms |
+| **Lab** | Lab 02 |
+| **Topic** | Static and Dynamic Arrays, Pointers, and Dynamic Memory Allocation |
+| **Language** | C++ |
 
-Name: Your Name
-Registration Number: Your Registration Number
-Section: Your Section
+---
+
+## 👤 Author
+
+| | |
+|---|---|
+| **Name** | Your Name |
+| **Registration Number** | Your Registration Number |
+| **Section** | Your Section |
+
+---
+
+<div align="center">
+
+*This repository is for educational purposes and contains my own implementation of the lab tasks.*
+
+</div>
